@@ -10,7 +10,13 @@ body,
 html {
   width: 100%;
   height: 100%;
-  background: rgb(200, 159, 204);
+  background: rgb(255, 136, 192);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 136, 192, 1) 50%,
+    rgba(255, 159, 204, 1) 50%,
+    rgba(255, 159, 204, 1) 50%
+  );
   font-family: "Raleway", sans-serif;
 }
 
@@ -49,5 +55,5 @@ html {
   min-height: 15rem;
   text-align: center;
   font-size: 3.5rem;
-  padding: 2rem;
+  /* padding: 2rem; */
 }

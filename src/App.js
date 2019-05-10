@@ -10,22 +10,32 @@ export default class App extends React.Component {
     this.state = {
       advice: null
     };
-    this.handleRequest();
+    this.getAdvice();
   }
 
   render() {
+    const { advice } = this.state;
     return (
       <div className="flex">
-        <AdviceSlip text={this.state.advice} />
-        <AdviceButton onRequestRandom={this.handleRequest} />
+        <AdviceSlip advice={advice} />
+        <AdviceButton onClick={this.handleClick} />
       </div>
     );
   }
 
-  handleRequest = () => {
+  handleClick = () => {
+    this.getAdvice();
+  };
+
+  splitAdvice = advice => {
+    this.setState({ advice: "" });
+    this.setState({ advice: advice.split("") });
+  };
+
+  getAdvice = () => {
     random()
       .then(response => {
-        this.setState({ advice: response.data.slip.advice });
+        this.splitAdvice(response.data.slip.advice);
       })
       .catch(err => console.log(err));
   };
