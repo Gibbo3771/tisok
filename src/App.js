@@ -1,5 +1,7 @@
 import React from "react";
 import AdviceSlip from "./componets/AdviceSlip";
+import AdviceButton from "./componets/AdviceButton";
+
 import { random } from "./api/advice_api";
 
 export default class App extends React.Component {
@@ -8,15 +10,14 @@ export default class App extends React.Component {
     this.state = {
       advice: null
     };
+    this.handleRequest();
   }
 
   render() {
     return (
-      <div>
-        <AdviceSlip
-          onRequestRandom={this.handleRequest}
-          text={this.state.advice}
-        />
+      <div className="flex">
+        <AdviceSlip text={this.state.advice} />
+        <AdviceButton onRequestRandom={this.handleRequest} />
       </div>
     );
   }

@@ -1,18 +1,7 @@
-import React, { Component } from "react";
-import AdviceButton from "./AdviceButton";
+import React from "react";
 
-export default class AdviceSlip extends Component {
-  constructor(props) {
-    super(props);
-    console.log("Advice slip created!");
-  }
+const AdviceSlip = props => {
+  return <div className="advice-text">{props.text}</div>;
+};
 
-  render() {
-    return (
-      <div>
-        {this.props.text}
-        <AdviceButton onClick={this.props.onRequestRandom} />
-      </div>
-    );
-  }
-}
+export default AdviceSlip;
