@@ -12,8 +12,8 @@ export default class AdviceSlip extends React.Component {
   }
 
   render() {
-    const { advice, mounted } = this.props;
-    if (!advice) return <div />;
+    const { slip, mounted } = this.props;
+    if (!slip) return <div />;
     const animeProps = {
       opacity: !mounted ? [0, 1] : [1, 0],
       delay: (element, index) => index * 15
@@ -21,7 +21,7 @@ export default class AdviceSlip extends React.Component {
     return (
       <div className="advice-text">
         <Anime {...animeProps}>
-          {advice.map((v, i) => (
+          {slip.advice.split("").map((v, i) => (
             <span key={i}>{v}</span>
           ))}
         </Anime>

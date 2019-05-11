@@ -19,6 +19,7 @@ export default class AdviceButton extends React.Component {
   onClick = () => {
     this.setState({ face: "xD" });
     this.props.onClick();
+    this.props.history.push("/");
   };
 
   render() {

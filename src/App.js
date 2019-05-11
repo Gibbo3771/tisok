@@ -9,20 +9,20 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      advice: null
+      slip: null
     };
   }
 
   render() {
-    const { advice } = this.state;
+    const { slip } = this.state;
     return (
       <Router>
         <Route
           path="/:id?"
           render={props => (
             <div className="grid">
-              <AdviceSlip {...props} advice={advice} onReady={this.getAdvice} />
-              <AdviceButton onClick={this.handleClick} />
+              <AdviceSlip {...props} slip={slip} onReady={this.getAdvice} />
+              <AdviceButton {...props} onClick={this.handleClick} />
             </div>
           )}
         />
@@ -34,11 +34,6 @@ export default class App extends React.Component {
     this.getRandomAdvice();
   };
 
-  splitAdvice = advice => {
-    this.setState({ advice: "" });
-    this.setState({ advice: advice.split("") });
-  };
-
   getAdvice = id => {
     if (!id) this.getRandomAdvice();
     else this.getAdviceByID(id);
@@ -47,7 +42,11 @@ export default class App extends React.Component {
   getRandomAdvice = () => {
     random()
       .then(response => {
-        this.splitAdvice(response.data.slip.advice);
+        console.log(response);
+        this.setState({ slip: null });
+        this.setState({
+          slip: response.data.slip
+        });
       })
       .catch(err => console.log(err));
   };
@@ -55,9 +54,10 @@ export default class App extends React.Component {
   getAdviceByID = id => {
     get(id)
       .then(response => {
-        console.log(response);
-
-        this.splitAdvice(response.data.slip.advice);
+        this.setState({ slip: null });
+        this.setState({
+          slip: response.data.slip
+        });
       })
       .catch(err => console.log(err));
   };
