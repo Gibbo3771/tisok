@@ -61,46 +61,43 @@ html {
   color: #3f2141;
   font-weight: 800;
   text-align: center;
-  font-size: 3.5rem;
+  font-size: 3.4rem;
 }
 
-/* Smartphones (portrait and landscape) ---------- */
-@media screen and (min-width: 320px) and (max-width: 480px) {
-  html {
-    font-size: 8px;
-  }
-}
 /* Smartphones (portrait) ---------- */
 @media screen and (max-width: 320px) {
   html {
-    font-size: 8px;
+    font-size: 7px;
   }
 }
 /* Smartphones (landscape) ---------- */
 @media screen and (min-width: 321px) {
   html {
-    /* font-size: 10px; */
+    font-size: 8px;
   }
 }
 /* Tablets, iPads (portrait and landscape) ---------- */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+  html {
+    font-size: 8px;
+  }
 }
 /* Tablets, iPads (portrait) ---------- */
 @media screen and (min-width: 768px) {
   html {
-    font-size: 12px;
+    font-size: 8px;
   }
 }
 /* Tablets, iPads (landscape) ---------- */
 @media screen and (min-width: 1024px) {
   html {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 /* Desktops and laptops ---------- */
 @media screen and (min-width: 1224px) {
   html {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 /* Large screens ---------- */
