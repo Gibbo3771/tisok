@@ -20,17 +20,22 @@ html {
   font-family: "Raleway", sans-serif;
 }
 
-.flex {
+.grid {
   margin-left: 10%;
   width: 80%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-areas:
+    "advice"
+    "button";
+  grid-template-columns: 100%;
+  grid-template-rows: auto 30%;
   align-items: center;
-  justify-content: center;
+  /* justify-self: center */
 }
 
 .advice-get {
+  grid-area: button;
   border: none;
   border-radius: 6px;
   color: #3f2141;
@@ -42,6 +47,8 @@ html {
   box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.219);
   text-decoration: none;
   cursor: pointer;
+  align-self: center;
+  justify-self: center;
 }
 
 .advice-get:active {
@@ -50,10 +57,55 @@ html {
 }
 
 .advice-text {
+  grid-area: advice;
   color: #3f2141;
   font-weight: 800;
-  min-height: 15rem;
   text-align: center;
   font-size: 3.5rem;
-  /* padding: 2rem; */
+}
+
+/* Smartphones (portrait and landscape) ---------- */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  html {
+    font-size: 8px;
+  }
+}
+/* Smartphones (portrait) ---------- */
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 8px;
+  }
+}
+/* Smartphones (landscape) ---------- */
+@media screen and (min-width: 321px) {
+  html {
+    /* font-size: 10px; */
+  }
+}
+/* Tablets, iPads (portrait and landscape) ---------- */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+}
+/* Tablets, iPads (portrait) ---------- */
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+}
+/* Tablets, iPads (landscape) ---------- */
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: 12px;
+  }
+}
+/* Desktops and laptops ---------- */
+@media screen and (min-width: 1224px) {
+  html {
+    font-size: 14px;
+  }
+}
+/* Large screens ---------- */
+@media screen and (min-width: 1824px) {
+  html {
+    font-size: 16px;
+  }
 }

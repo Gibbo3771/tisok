@@ -16,7 +16,7 @@ export default class App extends React.Component {
   render() {
     const { advice } = this.state;
     return (
-      <div className="flex">
+      <div className="grid">
         <AdviceSlip advice={advice} />
         <AdviceButton onClick={this.handleClick} />
       </div>
