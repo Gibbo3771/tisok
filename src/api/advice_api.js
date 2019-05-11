@@ -6,4 +6,8 @@ const random = () => {
   return axios.get(URL);
 };
 
-export { random };
+const get = id => {
+  return axios.get(`${URL}/${id}`);
+};
+
+export { random, get };
