@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AdviceSlip from "./componets/AdviceSlip";
 import AdviceButton from "./componets/AdviceButton";
+import { ShareLink } from "./componets/ShareLink";
 
 import { random, get } from "./api/advice_api";
 
@@ -23,6 +24,7 @@ export default class App extends React.Component {
             <div className="grid">
               <AdviceSlip {...props} slip={slip} onReady={this.getAdvice} />
               <AdviceButton {...props} onClick={this.handleClick} />
+              <ShareLink />
             </div>
           )}
         />
