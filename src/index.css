@@ -39,7 +39,7 @@ html {
   font-size: 2.75rem;
   min-width: 15rem;
   max-width: 20rem;
-  box-shadow: 1px 1px 0 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.219);
   text-decoration: none;
   cursor: pointer;
 }
