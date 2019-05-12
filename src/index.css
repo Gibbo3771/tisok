@@ -53,6 +53,10 @@ html {
   justify-self: center;
 }
 
+.advice-get:hover {
+  background: rgb(247, 247, 247);
+}
+
 .advice-get:active {
   transform: translate(1px, 1px);
   box-shadow: none;
@@ -79,6 +83,7 @@ html {
   justify-self: left;
   text-align: center;
   transition: color 70ms linear;
+  cursor: pointer;
 }
 
 .share-link:active {
@@ -87,8 +92,15 @@ html {
   box-shadow: none;
 }
 
+.clipboard-tooltip {
+  background: white;
+  border-radius: 3px;
+  font-size: 2rem;
+  color: #3f2141;
+}
+
 .share-link:hover {
-  color: rgb(255, 136, 192);
+  background: rgb(247, 247, 247);
 }
 
 /* Smartphones (portrait) ---------- */

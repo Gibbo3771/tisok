@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AdviceSlip from "./componets/AdviceSlip";
 import AdviceButton from "./componets/AdviceButton";
-import { ShareLink } from "./componets/ShareLink";
+import ShareLink from "./componets/ShareLink";
 
 import { random, get } from "./api/advice_api";
 
@@ -24,7 +24,7 @@ export default class App extends React.Component {
             <div className="grid">
               <AdviceSlip {...props} slip={slip} onReady={this.getAdvice} />
               <AdviceButton {...props} onClick={this.handleClick} />
-              <ShareLink />
+              <ShareLink slip={slip} onCopy={() => console.log("copied!")} />
             </div>
           )}
         />
@@ -44,7 +44,6 @@ export default class App extends React.Component {
   getRandomAdvice = () => {
     random()
       .then(response => {
-        console.log(response);
         this.setState({ slip: null });
         this.setState({
           slip: response.data.slip
