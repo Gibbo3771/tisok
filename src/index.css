@@ -26,10 +26,11 @@ html {
   height: 100%;
   display: grid;
   grid-template-areas:
-    "advice"
-    "button";
-  grid-template-columns: 100%;
-  grid-template-rows: auto 30%;
+    "advice advice advice"
+    ". button share";
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 70% 15%;
+  grid-gap: 15px;
   align-items: center;
   /* justify-self: center */
 }
@@ -41,6 +42,7 @@ html {
   color: #3f2141;
   background: white;
   padding: 10px;
+  min-height: 5rem;
   font-size: 2.75rem;
   min-width: 15rem;
   max-width: 20rem;
@@ -62,6 +64,31 @@ html {
   font-weight: 800;
   text-align: center;
   font-size: 3.4rem;
+}
+
+.share-link {
+  background: white;
+  border-radius: 5px;
+  padding: 1rem;
+  grid-area: share;
+  min-height: 2.5rem;
+  font-size: 2.75rem;
+  box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.219);
+  color: #3f2141;
+  align-self: center;
+  justify-self: left;
+  text-align: center;
+  transition: color 70ms linear;
+}
+
+.share-link:active {
+  transform: translate(1px, 1px);
+  transition: color 70ms linear;
+  box-shadow: none;
+}
+
+.share-link:hover {
+  color: rgb(255, 136, 192);
 }
 
 /* Smartphones (portrait) ---------- */

@@ -1,5 +1,6 @@
 import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { jsxFragment } from "@babel/types";
 
 const ShareLink = props => {
   return (
@@ -7,7 +8,7 @@ const ShareLink = props => {
       text={`${window.location.href}`}
       onCopy={() => console.log("copied!")}
     >
-      <span className="fas fa-clipboard" />
+      <i className="fa fa-clipboard share-link" />
     </CopyToClipboard>
   );
 };
