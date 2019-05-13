@@ -2,15 +2,17 @@ import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme from "enzyme";
 import ShareModal from "./ShareModal";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import sinon from "sinon";
 import { expect as expectChai } from "chai";
+import ReactModal from "react-modal";
 
 Enzyme.configure({ adapter: new Adapter() });
 
 let wrapper = null;
 
 const props = {
+  url: "www.google.com",
   facebookQuote: "facebook is bad mkay",
   facebookHashtag: "#sometag",
   twitterTitle: "twitter is too political",
@@ -19,9 +21,12 @@ const props = {
 
 describe("ShareModal", () => {
   beforeEach(() => {
+    mount(<div id="root" />);
+    ReactModal.setAppElement(document.getElementById("root"));
     wrapper = shallow(
       <ShareModal
         isOpen={false}
+        url={props.url}
         facebookQuote={props.facebookQuote}
         facebookHashtag={props.facebookHashtag}
         twitterTitle={props.twitterTitle}

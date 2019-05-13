@@ -25,7 +25,14 @@ export default class App extends React.Component {
             <div className="grid">
               <AdviceSlip {...props} slip={slip} onReady={this.getAdvice} />
               <AdviceButton {...props} onClick={this.handleClick} />
-              <ShareLink slip={slip} />
+              <ShareModal
+                isOpen={true}
+                url={`${window.location.href}${slip ? slip.slip_id : ""}`}
+                facebookQuote="fb"
+                facebookHashtag="fbht"
+                twitterTitle="tt"
+                twitterHashtags={["#sometag"]}
+              />
             </div>
           )}
         />
