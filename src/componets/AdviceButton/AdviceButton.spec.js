@@ -4,20 +4,44 @@ import Enzyme from "enzyme";
 import { shallow } from "enzyme";
 import renderer from "react-test-renderer";
 import AdviceButton from "./AdviceButton";
+import sinon from "sinon";
+import { expect as expectChai } from "chai";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-const onClick = jest.fn();
-
+const props = {
+  onClick: null,
+  history: null
+};
 describe("AdviceButton", () => {
+  beforeEach(() => {
+    props.onClick = sinon.spy();
+    props.history = {
+      push: sinon.spy()
+    };
+  });
+
   it("renders correctly", () => {
-    const tree = renderer.create(<AdviceButton onClick={onClick} />).toJSON();
+    const tree = renderer
+      .create(<AdviceButton onClick={props.onClick} />)
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it("responds to click events", () => {
-    const wrapper = shallow(<AdviceButton onClick={onClick} />);
-    expect(onClick.mock.calls.length).toBe(0);
+
+  it("pushes '/' to the browser history", () => {
+    const wrapper = shallow(
+      <AdviceButton history={props.history} onClick={props.onClick} />
+    );
     wrapper.find("button").simulate("click");
-    expect(onClick.mock.calls.length).toBe(1);
+    expectChai(props.history.push.calledOnceWith("/")).to.be.true;
+  });
+
+  it("responds to click events", () => {
+    const wrapper = shallow(
+      <AdviceButton history={props.history} onClick={props.onClick} />
+    );
+    expectChai(props.onClick.calledOnce).to.be.false;
+    wrapper.find("button").simulate("click");
+    expectChai(props.onClick.calledOnce).to.be.true;
   });
 });

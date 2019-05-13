@@ -12,10 +12,10 @@ export default class AdviceSlip extends React.Component {
   }
 
   render() {
-    const { slip, mounted } = this.props;
+    const { slip } = this.props;
     if (!slip) return <div />;
     const animeProps = {
-      opacity: !mounted ? [0, 1] : [1, 0],
+      opacity: [0, 1],
       delay: (element, index) => index * 15
     };
     return (
