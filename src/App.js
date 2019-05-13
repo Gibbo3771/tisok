@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import AdviceSlip from "./componets/AdviceSlip";
+import AdviceSlip from "./componets/AdviceSlip/AdviceSlip";
 import AdviceButton from "./componets/AdviceButton/AdviceButton";
-import ShareLink from "./componets/ShareLink";
+import ShareLink from "./componets/ShareLink/ShareLink";
 
 import { random, get } from "./api/advice_api";
 
@@ -24,7 +24,7 @@ export default class App extends React.Component {
             <div className="grid">
               <AdviceSlip {...props} slip={slip} onReady={this.getAdvice} />
               <AdviceButton {...props} onClick={this.handleClick} />
-              <ShareLink slip={slip} onCopy={() => console.log("copied!")} />
+              <ShareLink slip={slip} />
             </div>
           )}
         />

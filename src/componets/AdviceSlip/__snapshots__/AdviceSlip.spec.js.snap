@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdviceSlip renders correctly if it does not have a slip 1`] = `ShallowWrapper {}`;
+
+exports[`AdviceSlip renders correctly if it has a slip 1`] = `ShallowWrapper {}`;

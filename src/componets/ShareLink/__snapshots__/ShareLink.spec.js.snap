@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShareLink renders correctly if it has a slip 1`] = `ShallowWrapper {}`;
+
+exports[`ShareLink renders correctly if it has no slip 1`] = `ShallowWrapper {}`;

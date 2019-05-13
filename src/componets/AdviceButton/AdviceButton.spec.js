@@ -2,7 +2,6 @@ import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme from "enzyme";
 import { shallow } from "enzyme";
-import renderer from "react-test-renderer";
 import AdviceButton from "./AdviceButton";
 import sinon from "sinon";
 import { expect as expectChai } from "chai";
@@ -22,9 +21,7 @@ describe("AdviceButton", () => {
   });
 
   it("renders correctly", () => {
-    const tree = renderer
-      .create(<AdviceButton onClick={props.onClick} />)
-      .toJSON();
+    const tree = shallow(<AdviceButton onClick={props.onClick} />);
     expect(tree).toMatchSnapshot();
   });
 
