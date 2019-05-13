@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AdviceSlip from "./componets/AdviceSlip";
-import AdviceButton from "./componets/AdviceButton";
+import AdviceButton from "./componets/AdviceButton/AdviceButton";
 import ShareLink from "./componets/ShareLink";
 
 import { random, get } from "./api/advice_api";

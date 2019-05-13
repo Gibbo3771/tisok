@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdviceButton renders correctly 1`] = `
+<button
+  className="advice-get"
+  onClick={[Function]}
+>
+  (｡^‿^｡)
+</button>
+`;
