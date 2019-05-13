@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import AdviceSlip from "./componets/AdviceSlip/AdviceSlip";
 import AdviceButton from "./componets/AdviceButton/AdviceButton";
 import ShareLink from "./componets/ShareLink/ShareLink";
+import ShareModal from "./componets/ShareModal/ShareModal";
 
 import { random, get } from "./api/advice_api";
 
