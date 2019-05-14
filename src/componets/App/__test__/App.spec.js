@@ -68,4 +68,7 @@ describe("App", () => {
     expectChai(spy.callCount).to.equal(1);
     spy.restore();
   });
+  it("has a social media panel", () => {
+    expectChai(wrapper.exists(".social-media-panel")).to.be.true;
+  });
 });

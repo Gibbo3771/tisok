@@ -26,4 +26,31 @@ describe("SocialMediaPanel", () => {
     );
     expectChai(wrapper.exists("#social-media-panel")).to.be.not.null;
   });
+  it("should have a facebook button and icon", () => {
+    const wrapper = shallow(
+      <SocialMediaPanel url={props.url} slip={props.slip} />
+    );
+    expectChai(wrapper.exists(".share-facebook")).to.be.true;
+    expectChai(wrapper.exists("#icon-facebook")).to.be.true;
+  });
+  it("should have a twitter button and icon", () => {
+    const wrapper = shallow(
+      <SocialMediaPanel url={props.url} slip={props.slip} />
+    );
+    expectChai(wrapper.exists(".share-twitter")).to.be.true;
+    expectChai(wrapper.exists("#icon-twitter")).to.be.true;
+  });
+  it("should have some text to send to the social media platforms", () => {
+    const wrapper = shallow(
+      <SocialMediaPanel url={props.url} slip={props.slip} />
+    );
+    expectChai(wrapper.state().text).to.be.not.null;
+  });
+  it("should have some hashtags to send to the social media platforms", () => {
+    const wrapper = shallow(
+      <SocialMediaPanel url={props.url} slip={props.slip} />
+    );
+    expectChai(wrapper.state().hashtags).to.be.not.null;
+    expectChai(wrapper.state().hashtags.length).to.be.greaterThan(0);
+  });
 });

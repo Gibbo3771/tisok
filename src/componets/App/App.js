@@ -5,6 +5,7 @@ import AdviceButton from "../AdviceButton/AdviceButton";
 import ShareModal from "../ShareModal/ShareModal";
 
 import api from "../../api/advice_api";
+import SocialMediaPanel from "../SocialMediaPanel/SocialMediaPanel";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -29,12 +30,7 @@ export default class App extends React.Component {
                 onReady={() => this.getAdvice()}
               />
               <AdviceButton {...props} onClick={() => this.handleClick()} />
-              <ShareModal
-                isOpen={isModalOpen}
-                url={`${window.location.href}${slip ? slip.slip_id : ""}`}
-                slip={slip}
-                onRequestClose={this.onRequestModalClose}
-              />
+              <SocialMediaPanel />
             </div>
           )}
         />
