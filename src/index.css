@@ -27,9 +27,10 @@ html {
   display: grid;
   grid-template-areas:
     "advice advice advice"
-    ". button share";
+    ". button ."
+    ". share .";
   grid-template-columns: 1fr auto 1fr;
-  grid-template-rows: 70% 15%;
+  grid-template-rows: 50% 15% 25%;
   grid-gap: 15px;
   align-items: center;
   /* justify-self: center */
@@ -132,6 +133,13 @@ html {
   align-self: center;
 }
 
+.social-media-panel {
+  grid-area: share;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 /* Smartphones (portrait) ---------- */
 @media screen and (max-width: 320px) {
   html {
@@ -141,7 +149,7 @@ html {
 /* Smartphones (landscape) ---------- */
 @media screen and (min-width: 321px) {
   html {
-    font-size: 8px;
+    font-size: 7px;
   }
 }
 /* Tablets, iPads (portrait and landscape) ---------- */
@@ -152,6 +160,12 @@ html {
 }
 /* Tablets, iPads (portrait) ---------- */
 @media screen and (min-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+}
+/* iPad X (portrait) ---------- */
+@media screen and (min-width: 768px) and (max-width: 850px) {
   html {
     font-size: 8px;
   }

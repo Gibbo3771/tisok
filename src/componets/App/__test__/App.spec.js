@@ -25,7 +25,7 @@ describe("App", () => {
   });
   it("should have valid initial state", () => {
     expectChai(wrapper.state().slip).to.be.not.null;
-    expectChai(wrapper.state().isModalOpen).to.be.false;
+    expectChai(wrapper.state().url).to.be.not.null;
   });
   it("responds to the advice button being clicked", async () => {
     const clickSpy = sinon.spy(instance, "handleClick");

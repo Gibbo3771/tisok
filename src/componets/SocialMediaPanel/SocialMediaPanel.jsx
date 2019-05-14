@@ -4,8 +4,7 @@ import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, TwitterIcon } from "react-share";
 
 export type Props = {
-  url: string,
-  slip: any
+  url: string
 };
 
 export type State = {
@@ -26,14 +25,14 @@ export default class SocialMediaPanel extends React.Component<Props, State> {
     const { url } = this.props;
     const { text, hashtags } = this.state;
     return (
-      <div id="social-media-panel">
+      <div className="social-media-panel">
         <FacebookShareButton
           className="share-facebook"
           url={url}
           quote={text}
           hashtag={hashtags[0]}
         >
-          <FacebookIcon id="icon-facebook" size={48} round={true} />
+          <FacebookIcon className="icon-facebook" size={48} round={true} />
         </FacebookShareButton>
         <TwitterShareButton
           className="share-twitter"
@@ -41,7 +40,7 @@ export default class SocialMediaPanel extends React.Component<Props, State> {
           title={text}
           hashtags={hashtags}
         >
-          <TwitterIcon id="icon-twitter" size={48} round={true} />
+          <TwitterIcon className="icon-twitter" size={48} round={true} />
         </TwitterShareButton>
       </div>
     );

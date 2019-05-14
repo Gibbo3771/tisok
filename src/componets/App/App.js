@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AdviceSlip from "../AdviceSlip/AdviceSlip";
@@ -7,17 +8,24 @@ import ShareModal from "../ShareModal/ShareModal";
 import api from "../../api/advice_api";
 import SocialMediaPanel from "../SocialMediaPanel/SocialMediaPanel";
 
-export default class App extends React.Component {
-  constructor(props) {
+export type Props = {};
+
+export type State = {
+  slip: any,
+  url: string
+};
+
+export default class App extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       slip: {},
-      isModalOpen: false
+      url: window.location.href
     };
   }
 
   render() {
-    const { slip, isModalOpen } = this.state;
+    const { slip, url } = this.state;
     return (
       <Router>
         <Route
@@ -30,7 +38,7 @@ export default class App extends React.Component {
                 onReady={() => this.getAdvice()}
               />
               <AdviceButton {...props} onClick={() => this.handleClick()} />
-              <SocialMediaPanel />
+              <SocialMediaPanel url={url} />
             </div>
           )}
         />
@@ -42,18 +50,16 @@ export default class App extends React.Component {
     this.getRandomAdvice();
   };
 
-  onRequestModalClose = () => {
-    this.setState({ isModalOpen: false });
-  };
-
-  getAdvice = id => {
+  getAdvice = (id?: number) => {
     if (!id) this.getRandomAdvice();
     else this.getAdviceByID(id);
   };
 
-  setAdvice = response => {
+  setAdvice = (response: any) => {
+    const { slip } = response.data;
     this.setState({
-      slip: response.data.slip
+      slip: slip,
+      url: `${window.location.href}${slip.slip_id}`
     });
   };
 
@@ -66,7 +72,7 @@ export default class App extends React.Component {
       .catch(err => console.log(err));
   };
 
-  getAdviceByID = id => {
+  getAdviceByID = (id: number) => {
     api
       .get(id)
       .then(response => {
