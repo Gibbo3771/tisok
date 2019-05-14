@@ -35,7 +35,7 @@ export default class App extends React.Component<Props, State> {
               <AdviceSlip
                 {...props}
                 slip={slip}
-                onReady={() => this.getAdvice()}
+                onReady={id => this.getAdvice(id)}
               />
               <AdviceButton {...props} onClick={() => this.handleClick()} />
               <SocialMediaPanel url={url} />
@@ -51,6 +51,8 @@ export default class App extends React.Component<Props, State> {
   };
 
   getAdvice = (id?: number) => {
+    console.log(id);
+
     if (!id) this.getRandomAdvice();
     else this.getAdviceByID(id);
   };

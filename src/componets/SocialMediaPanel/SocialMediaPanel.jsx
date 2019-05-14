@@ -33,14 +33,14 @@ export default class SocialMediaPanel extends React.Component<Props, State> {
         data-for="social-media-tooltip"
         data-tip="Share"
       >
-        <FacebookShareButton
+        {/* <FacebookShareButton
           className="share-facebook"
           url={url}
           quote={text}
           hashtag={hashtags[0]}
         >
           <i className="fab fa-facebook-square icon-facebook icon" />
-        </FacebookShareButton>
+        </FacebookShareButton> */}
         <TwitterShareButton
           className="share-twitter"
           url={url}

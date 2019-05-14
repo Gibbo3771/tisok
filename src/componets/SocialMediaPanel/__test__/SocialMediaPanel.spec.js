@@ -21,7 +21,7 @@ describe("SocialMediaPanel", () => {
     const wrapper = shallow(<SocialMediaPanel url={props.url} />);
     expectChai(wrapper.exists("#social-media-panel")).to.be.not.null;
   });
-  it("should have a facebook button and icon", () => {
+  xit("should have a facebook button and icon", () => {
     const wrapper = shallow(<SocialMediaPanel url={props.url} />);
     expectChai(wrapper.exists(".share-facebook")).to.be.true;
     expectChai(wrapper.exists(".icon-facebook")).to.be.true;
