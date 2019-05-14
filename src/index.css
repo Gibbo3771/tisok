@@ -71,16 +71,16 @@ html {
 }
 
 .share-link {
+  grid-area: clipboard;
   background: white;
   border-radius: 5px;
   padding: 1rem;
-  grid-area: share;
   min-height: 2.5rem;
   font-size: 2.75rem;
   box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.219);
   color: #3f2141;
   align-self: center;
-  justify-self: left;
+  justify-self: center;
   text-align: center;
   transition: color 70ms linear;
   cursor: pointer;

@@ -5,7 +5,7 @@ const slips = [
 ];
 
 module.exports = {
-  get: () => {
+  get: id => {
     return Promise.resolve({
       data: {
         slip: {

@@ -11,7 +11,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       slip: {},
-      isModalOpen: false
+      isModalOpen: true
     };
   }
 
@@ -23,8 +23,12 @@ export default class App extends React.Component {
           path="/:id?"
           render={props => (
             <div className="grid">
-              <AdviceSlip {...props} slip={slip} onReady={this.getAdvice} />
-              <AdviceButton {...props} onClick={this.handleClick} />
+              <AdviceSlip
+                {...props}
+                slip={slip}
+                onReady={() => this.getAdvice()}
+              />
+              <AdviceButton {...props} onClick={() => this.handleClick()} />
               <ShareModal
                 isOpen={isModalOpen}
                 url={`${window.location.href}${slip ? slip.slip_id : ""}`}
@@ -51,14 +55,17 @@ export default class App extends React.Component {
     else this.getAdviceByID(id);
   };
 
+  setAdvice = response => {
+    this.setState({
+      slip: response.data.slip
+    });
+  };
+
   getRandomAdvice = () => {
-    api
+    return api
       .random()
       .then(response => {
-        this.setState({ slip: {} });
-        this.setState({
-          slip: response.data.slip
-        });
+        this.setAdvice(response);
       })
       .catch(err => console.log(err));
   };
@@ -67,10 +74,7 @@ export default class App extends React.Component {
     api
       .get(id)
       .then(response => {
-        this.setState({ slip: {} });
-        this.setState({
-          slip: response.data.slip
-        });
+        this.setAdvice(response);
       })
       .catch(err => console.log(err));
   };

@@ -21,9 +21,4 @@ describe("ShareLink", () => {
     const tree = shallow(<ShareLink slip={slip} />);
     expect(tree).toMatchSnapshot();
   });
-  it("renders correctly if it has no slip", () => {
-    const { slip } = props;
-    const tree = shallow(<ShareLink slip={slip} />);
-    expect(tree).toMatchSnapshot();
-  });
 });

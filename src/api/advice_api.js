@@ -8,7 +8,7 @@ class AdviceAPI {
   };
 
   get = id => {
-    axios.get(`${URL}/${id}`);
+    return axios.get(`${URL}/${id}`);
   };
 }
 
