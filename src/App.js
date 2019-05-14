@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AdviceSlip from "./componets/AdviceSlip/AdviceSlip";
 import AdviceButton from "./componets/AdviceButton/AdviceButton";
-import ShareLink from "./componets/ShareLink/ShareLink";
 import ShareModal from "./componets/ShareModal/ShareModal";
 
 import { random, get } from "./api/advice_api";
@@ -11,7 +10,10 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      slip: null
+      slip: {
+        advice: "",
+        slip_id: 1
+      }
     };
   }
 
@@ -28,6 +30,7 @@ export default class App extends React.Component {
               <ShareModal
                 isOpen={true}
                 url={`${window.location.href}${slip ? slip.slip_id : ""}`}
+                slip={slip}
               />
             </div>
           )}

@@ -13,14 +13,17 @@ let wrapper = null;
 
 const props = {
   url: "www.google.com",
-  isOpen: false
+  isOpen: false,
+  slip: {}
 };
 
 describe("ShareModal", () => {
   beforeEach(() => {
     mount(<div id="root" />);
     ReactModal.setAppElement(document.getElementById("root"));
-    wrapper = shallow(<ShareModal isOpen={props.isOpen} url={props.url} />);
+    wrapper = shallow(
+      <ShareModal isOpen={props.isOpen} url={props.url} slip={props.slip} />
+    );
   });
   it("renders correctly", () => {
     expect(wrapper).toMatchSnapshot();

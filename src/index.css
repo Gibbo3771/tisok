@@ -103,6 +103,29 @@ html {
   background: rgb(247, 247, 247);
 }
 
+.share-modal {
+  display: grid;
+  grid-template-areas: "facebook twitter clipboard";
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 250px;
+  height: 150px;
+  background: white;
+  border-radius: 5px;
+  border: 1px black;
+}
+
+.share-facebook {
+  grid-area: facebook;
+  justify-self: center;
+  align-self: center;
+}
+
+.share-twitter {
+  grid-area: twitter;
+  justify-self: center;
+  align-self: center;
+}
+
 /* Smartphones (portrait) ---------- */
 @media screen and (max-width: 320px) {
   html {

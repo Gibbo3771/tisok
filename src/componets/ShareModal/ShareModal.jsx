@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 // All share stuff
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, TwitterIcon } from "react-share";
+import ShareLink from "../ShareLink/ShareLink";
 
 export default class ShareModal extends React.Component {
   constructor(props) {
@@ -15,21 +16,33 @@ export default class ShareModal extends React.Component {
     };
   }
   render() {
-    const { isOpen, url } = this.props;
+    const { isOpen, url, slip } = this.props;
     const { text, hashtags } = this.state;
     return (
-      <ReactModal id="modal" isOpen={this.props.isOpen}>
-        <FacebookShareButton url={url} quote={text} hashtag={hashtags[0]}>
+      <ReactModal className="share-modal" id="modal" isOpen={this.props.isOpen}>
+        <FacebookShareButton
+          className="share-facebook"
+          url={url}
+          quote={text}
+          hashtag={hashtags[0]}
+        >
           <FacebookIcon size={48} round={true} />
         </FacebookShareButton>
-        <TwitterShareButton url={url} title={text} hashtags={hashtags}>
+        <TwitterShareButton
+          className="share-twitter"
+          url={url}
+          title={text}
+          hashtags={hashtags}
+        >
           <TwitterIcon size={48} round={true} />
         </TwitterShareButton>
+        <ShareLink slip={slip} />
       </ReactModal>
     );
   }
 }
 
 ShareModal.propTypes = {
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  slip: PropTypes.any.isRequired
 };
