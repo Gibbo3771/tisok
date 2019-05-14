@@ -30,7 +30,7 @@ html {
     ". button ."
     ". share .";
   grid-template-columns: 1fr auto 1fr;
-  grid-template-rows: 50% 15% 25%;
+  grid-template-rows: 50% 15% 35%;
   grid-gap: 15px;
   align-items: center;
   /* justify-self: center */
@@ -93,10 +93,10 @@ html {
   box-shadow: none;
 }
 
-.clipboard-tooltip {
+.tooltip {
   background: white;
   border-radius: 3px;
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: #3f2141;
 }
 
@@ -138,6 +138,22 @@ html {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  background: rgba(255, 255, 255, 0.692);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.icon {
+  cursor: pointer;
+  font-size: 5rem;
+}
+
+.icon-twitter {
+  color: #38a1f3;
+}
+
+.icon-facebook {
+  color: #3b5998;
 }
 
 /* Smartphones (portrait) ---------- */
