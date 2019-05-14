@@ -13,40 +13,25 @@ let wrapper = null;
 
 const props = {
   url: "www.google.com",
-  facebookQuote: "facebook is bad mkay",
-  facebookHashtag: "#sometag",
-  twitterTitle: "twitter is too political",
-  twitterHashtags: ["#tag1", "#tag2"]
+  isOpen: false
 };
 
 describe("ShareModal", () => {
   beforeEach(() => {
     mount(<div id="root" />);
     ReactModal.setAppElement(document.getElementById("root"));
-    wrapper = shallow(
-      <ShareModal
-        isOpen={false}
-        url={props.url}
-        facebookQuote={props.facebookQuote}
-        facebookHashtag={props.facebookHashtag}
-        twitterTitle={props.twitterTitle}
-        twitterHashtags={props.twitterHashtags}
-      />
-    );
+    wrapper = shallow(<ShareModal isOpen={props.isOpen} url={props.url} />);
   });
   it("renders correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });
-  it("has facebook share props", () => {
-    expectChai(wrapper.instance().props.facebookQuote).to.equal(
-      "facebook is bad mkay"
-    );
-    expectChai(wrapper.instance().props.facebookHashtag).to.equal("#sometag");
+  it("has text to share", () => {
+    expectChai(wrapper.state().text).to.equal("Advice to live by...");
   });
-  it("has twitter share props", () => {
-    expectChai(wrapper.instance().props.twitterTitle).to.equal(
-      "twitter is too political"
-    );
-    expectChai(wrapper.instance().props.twitterHashtags.length).to.equal(2);
+  it("has hashtags", () => {
+    expectChai(wrapper.state().hashtags).to.be.not.null;
+    expectChai(wrapper.state().hashtags.length).to.equal(2);
+    expectChai(wrapper.state().hashtags[0]).to.equal("tisok");
+    expectChai(wrapper.state().hashtags[1]).to.equal("lifeprotips");
   });
 });

@@ -28,10 +28,6 @@ export default class App extends React.Component {
               <ShareModal
                 isOpen={true}
                 url={`${window.location.href}${slip ? slip.slip_id : ""}`}
-                facebookQuote="fb"
-                facebookHashtag="fbht"
-                twitterTitle="tt"
-                twitterHashtags={["#sometag"]}
               />
             </div>
           )}
