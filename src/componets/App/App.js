@@ -59,6 +59,7 @@ export default class App extends React.Component<Props, State> {
 
   setAdvice = (response: any) => {
     const { slip } = response.data;
+    this.setState({ slip: {} });
     this.setState({
       slip: slip,
       url: `${window.location.href}${slip.slip_id}`
