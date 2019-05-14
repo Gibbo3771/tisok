@@ -22,11 +22,9 @@ export default class AdviceSlip extends React.Component {
     };
     return (
       <div id="advice-text" className="advice-text">
-        <Anime {...animeProps}>
-          {slip.advice.split("").map((v, i) => (
-            <span key={i}>{v}</span>
-          ))}
-        </Anime>
+        {slip.advice.split("").map((v, i) => (
+          <span key={i}>{v}</span>
+        ))}
       </div>
     );
   }

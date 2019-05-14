@@ -22,6 +22,7 @@ export default class ShareModal extends React.Component {
     return (
       <ReactModal
         className="share-modal"
+        // overlayClassName="share-modal-overlay"
         id="modal"
         isOpen={this.props.isOpen}
         onRequestClose={onRequestClose}

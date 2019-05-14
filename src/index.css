@@ -112,6 +112,12 @@ html {
   background: white;
   border-radius: 5px;
   border: 1px black;
+  align-content: center;
+}
+
+.share-modal-overlay {
+  height: 100%;
+  width: 100%;
 }
 
 .share-facebook {
