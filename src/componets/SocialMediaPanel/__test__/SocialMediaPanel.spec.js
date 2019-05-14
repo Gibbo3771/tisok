@@ -40,4 +40,8 @@ describe("SocialMediaPanel", () => {
     expectChai(wrapper.state().hashtags).to.be.not.null;
     expectChai(wrapper.state().hashtags.length).to.be.greaterThan(0);
   });
+  it("should have some description to send to the social media platforms", () => {
+    const wrapper = mount(<SocialMediaPanel url={props.url} />);
+    expectChai(wrapper.state().description).to.be.not.null;
+  });
 });
