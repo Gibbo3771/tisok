@@ -1,12 +1,12 @@
 import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme from "enzyme";
-import App from "./App";
+import App from "../App";
 import { shallow, mount } from "enzyme";
 import sinon from "sinon";
 import { expect as expectChai } from "chai";
 import axios from "axios";
-import api from "./api/advice_api";
+import api from "../../../api/advice_api";
 
 Enzyme.configure({ adapter: new Adapter() });
 

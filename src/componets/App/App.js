@@ -1,17 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import AdviceSlip from "./componets/AdviceSlip/AdviceSlip";
-import AdviceButton from "./componets/AdviceButton/AdviceButton";
-import ShareModal from "./componets/ShareModal/ShareModal";
+import AdviceSlip from "../AdviceSlip/AdviceSlip";
+import AdviceButton from "../AdviceButton/AdviceButton";
+import ShareModal from "../ShareModal/ShareModal";
 
-import api from "./api/advice_api";
+import api from "../../api/advice_api";
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       slip: {},
-      isModalOpen: true
+      isModalOpen: false
     };
   }
 
