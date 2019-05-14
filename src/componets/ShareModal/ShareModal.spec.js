@@ -13,16 +13,26 @@ let wrapper = null;
 
 const props = {
   url: "www.google.com",
-  isOpen: false,
-  slip: {}
+  slip: {
+    slip_id: 1,
+    advice: "eat fruit"
+  },
+  isModalOpen: false,
+  onRequestClose: sinon.spy()
 };
 
 describe("ShareModal", () => {
   beforeEach(() => {
+    const { url, slip, isModalOpen, onRequestClose } = props;
     mount(<div id="root" />);
     ReactModal.setAppElement(document.getElementById("root"));
     wrapper = shallow(
-      <ShareModal isOpen={props.isOpen} url={props.url} slip={props.slip} />
+      <ShareModal
+        isOpen={isModalOpen}
+        url={url}
+        slip={slip}
+        onRequestClose={onRequestClose}
+      />
     );
   });
   it("renders correctly", () => {
@@ -36,5 +46,10 @@ describe("ShareModal", () => {
     expectChai(wrapper.state().hashtags.length).to.equal(2);
     expectChai(wrapper.state().hashtags[0]).to.equal("tisok");
     expectChai(wrapper.state().hashtags[1]).to.equal("lifeprotips");
+  });
+  xit("toggles open and closed", () => {
+    expectChai(wrapper.instance().props.isOpen).to.be.false;
+    wrapper.setProps({ isOpen: true });
+    expectChai(wrapper.instance().props.isOpen).to.be.true;
   });
 });

@@ -13,13 +13,13 @@ export default class AdviceSlip extends React.Component {
 
   render() {
     const { slip } = this.props;
-    if (!slip) return <div />;
+    if (!slip.advice) return <div />;
     const animeProps = {
       opacity: [0, 1],
       delay: (element, index) => index * 15
     };
     return (
-      <div className="advice-text">
+      <div id="advice-text" className="advice-text">
         <Anime {...animeProps}>
           {slip.advice.split("").map((v, i) => (
             <span key={i}>{v}</span>

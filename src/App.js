@@ -4,21 +4,19 @@ import AdviceSlip from "./componets/AdviceSlip/AdviceSlip";
 import AdviceButton from "./componets/AdviceButton/AdviceButton";
 import ShareModal from "./componets/ShareModal/ShareModal";
 
-import { random, get } from "./api/advice_api";
+import api from "./api/advice_api";
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      slip: {
-        advice: "",
-        slip_id: 1
-      }
+      slip: {},
+      isModalOpen: false
     };
   }
 
   render() {
-    const { slip } = this.state;
+    const { slip, isModalOpen } = this.state;
     return (
       <Router>
         <Route
@@ -28,9 +26,10 @@ export default class App extends React.Component {
               <AdviceSlip {...props} slip={slip} onReady={this.getAdvice} />
               <AdviceButton {...props} onClick={this.handleClick} />
               <ShareModal
-                isOpen={true}
+                isOpen={isModalOpen}
                 url={`${window.location.href}${slip ? slip.slip_id : ""}`}
                 slip={slip}
+                onRequestClose={this.onRequestModalClose}
               />
             </div>
           )}
@@ -43,15 +42,20 @@ export default class App extends React.Component {
     this.getRandomAdvice();
   };
 
+  onRequestModalClose = () => {
+    this.setState({ isModalOpen: false });
+  };
+
   getAdvice = id => {
     if (!id) this.getRandomAdvice();
     else this.getAdviceByID(id);
   };
 
   getRandomAdvice = () => {
-    random()
+    api
+      .random()
       .then(response => {
-        this.setState({ slip: null });
+        this.setState({ slip: {} });
         this.setState({
           slip: response.data.slip
         });
@@ -60,9 +64,10 @@ export default class App extends React.Component {
   };
 
   getAdviceByID = id => {
-    get(id)
+    api
+      .get(id)
       .then(response => {
-        this.setState({ slip: null });
+        this.setState({ slip: {} });
         this.setState({
           slip: response.data.slip
         });

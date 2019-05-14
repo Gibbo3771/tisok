@@ -35,9 +35,12 @@ describe("AdviceSlip", () => {
     );
     expect(tree).toMatchSnapshot();
   });
-  it("renders correctly if it does not have a slip", () => {
+  it("renders correctly if it has an empty slip", () => {
     const { onReady, match } = props;
-    const tree = shallow(<AdviceSlip onReady={onReady} match={match} />);
+    const slip = {};
+    const tree = shallow(
+      <AdviceSlip onReady={onReady} match={match} slip={slip} />
+    );
     expect(tree).toMatchSnapshot();
   });
   it("calls on ready with no id if no id is given", () => {

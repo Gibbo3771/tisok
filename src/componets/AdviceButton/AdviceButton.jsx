@@ -8,7 +8,7 @@ export default class AdviceButton extends React.Component {
 
   render() {
     return (
-      <button className="advice-get" onClick={this.onClick}>
+      <button id="advice-button" className="advice-get" onClick={this.onClick}>
         (｡^‿^｡)
       </button>
     );

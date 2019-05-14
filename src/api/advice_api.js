@@ -2,12 +2,14 @@ import axios from "axios";
 
 const URL = "https://api.adviceslip.com/advice";
 
-const random = () => {
-  return axios.get(URL);
-};
+class AdviceAPI {
+  random = () => {
+    return axios.get(URL);
+  };
 
-const get = id => {
-  return axios.get(`${URL}/${id}`);
-};
+  get = id => {
+    axios.get(`${URL}/${id}`);
+  };
+}
 
-export { random, get };
+export default new AdviceAPI();

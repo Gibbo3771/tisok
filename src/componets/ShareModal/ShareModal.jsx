@@ -16,10 +16,16 @@ export default class ShareModal extends React.Component {
     };
   }
   render() {
-    const { isOpen, url, slip } = this.props;
+    const { isOpen, url, slip, onRequestClose } = this.props;
+
     const { text, hashtags } = this.state;
     return (
-      <ReactModal className="share-modal" id="modal" isOpen={this.props.isOpen}>
+      <ReactModal
+        className="share-modal"
+        id="modal"
+        isOpen={this.props.isOpen}
+        onRequestClose={onRequestClose}
+      >
         <FacebookShareButton
           className="share-facebook"
           url={url}
@@ -44,5 +50,6 @@ export default class ShareModal extends React.Component {
 
 ShareModal.propTypes = {
   url: PropTypes.string.isRequired,
-  slip: PropTypes.any.isRequired
+  slip: PropTypes.any.isRequired,
+  onRequestClose: PropTypes.func.isRequired
 };
