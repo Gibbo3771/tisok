@@ -1,6 +1,7 @@
 import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import ReactTooltip from "react-tooltip";
+import PropTypes from "prop-types";
 
 export default class ShareLink extends React.Component {
   render() {
@@ -30,3 +31,7 @@ export default class ShareLink extends React.Component {
     );
   }
 }
+
+ShareLink.propTypes = {
+  slip: PropTypes.any.isRequired
+};

@@ -27,11 +27,13 @@ html {
   display: grid;
   grid-template-areas:
     "advice advice advice"
-    ". button share";
+    ". button ."
+    ". share .";
   grid-template-columns: 1fr auto 1fr;
-  grid-template-rows: 70% 15%;
+  grid-template-rows: 3fr 1fr 1fr;
   grid-gap: 15px;
   align-items: center;
+  justify-items: center;
   /* justify-self: center */
 }
 
@@ -71,16 +73,16 @@ html {
 }
 
 .share-link {
+  grid-area: clipboard;
   background: white;
   border-radius: 5px;
   padding: 1rem;
-  grid-area: share;
   min-height: 2.5rem;
   font-size: 2.75rem;
   box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.219);
   color: #3f2141;
   align-self: center;
-  justify-self: left;
+  justify-self: center;
   text-align: center;
   transition: color 70ms linear;
   cursor: pointer;
@@ -92,15 +94,68 @@ html {
   box-shadow: none;
 }
 
-.clipboard-tooltip {
+.tooltip {
   background: white;
   border-radius: 3px;
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: #3f2141;
 }
 
 .share-link:hover {
   background: rgb(247, 247, 247);
+}
+
+.share-modal {
+  display: grid;
+  grid-template-areas: "facebook twitter clipboard";
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 250px;
+  height: 150px;
+  background: white;
+  border-radius: 5px;
+  border: 1px black;
+  align-content: center;
+}
+
+.share-modal-overlay {
+  height: 100%;
+  width: 100%;
+}
+
+.share-facebook {
+  grid-area: facebook;
+  justify-self: center;
+  align-self: center;
+}
+
+.share-twitter {
+  grid-area: twitter;
+  justify-self: center;
+  align-self: center;
+}
+
+.social-media-panel {
+  grid-area: share;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: auto;
+  background: rgba(255, 255, 255, 0.692);
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.icon {
+  cursor: pointer;
+  font-size: 5rem;
+}
+
+.icon-twitter {
+  color: #38a1f3;
+}
+
+.icon-facebook {
+  color: #3b5998;
 }
 
 /* Smartphones (portrait) ---------- */
@@ -112,7 +167,7 @@ html {
 /* Smartphones (landscape) ---------- */
 @media screen and (min-width: 321px) {
   html {
-    font-size: 8px;
+    font-size: 7px;
   }
 }
 /* Tablets, iPads (portrait and landscape) ---------- */
@@ -123,6 +178,12 @@ html {
 }
 /* Tablets, iPads (portrait) ---------- */
 @media screen and (min-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+}
+/* iPad X (portrait) ---------- */
+@media screen and (min-width: 768px) and (max-width: 850px) {
   html {
     font-size: 8px;
   }
