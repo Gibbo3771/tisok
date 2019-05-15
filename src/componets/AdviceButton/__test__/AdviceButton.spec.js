@@ -5,7 +5,6 @@ import Enzyme from "enzyme";
 import { shallow } from "enzyme";
 import AdviceButton from "../AdviceButton";
 import sinon from "sinon";
-import { expect as expectChai } from "chai";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -32,15 +31,15 @@ describe("AdviceButton", () => {
       <AdviceButton history={props.history} onClick={props.onClick} />
     );
     wrapper.find("button").simulate("click");
-    expectChai(props.history.push.calledOnceWith("/")).to.be.true;
+    expect(props.history.push.calledOnceWith("/")).toBeTruthy();
   });
 
   it("responds to click events", () => {
     const wrapper = shallow(
       <AdviceButton history={props.history} onClick={props.onClick} />
     );
-    expectChai(props.onClick.calledOnce).to.be.false;
+    expect(props.onClick.calledOnce).toBeFalsy();
     wrapper.find("button").simulate("click");
-    expectChai(props.onClick.calledOnce).to.be.true;
+    expect(props.onClick.calledOnce).toBeTruthy();
   });
 });

@@ -5,7 +5,6 @@ import Enzyme from "enzyme";
 import ShareModal from "../ShareModal";
 import { shallow, mount } from "enzyme";
 import sinon from "sinon";
-import { expect as expectChai } from "chai";
 import ReactModal from "react-modal";
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -49,7 +48,7 @@ describe("ShareModal", () => {
         onRequestClose={onRequestClose}
       />
     );
-    expectChai(wrapper.state().text).to.equal("Advice to live by...");
+    expect(wrapper.state().text).toEqual("Advice to live by...");
   });
   it("has hashtags", () => {
     const wrapper = shallow(
@@ -60,10 +59,10 @@ describe("ShareModal", () => {
         onRequestClose={onRequestClose}
       />
     );
-    expectChai(wrapper.state().hashtags).to.be.not.null;
-    expectChai(wrapper.state().hashtags.length).to.equal(2);
-    expectChai(wrapper.state().hashtags[0]).to.equal("tisok");
-    expectChai(wrapper.state().hashtags[1]).to.equal("lifeprotips");
+    expect(wrapper.state().hashtags).toBeDefined();
+    expect(wrapper.state().hashtags.length).toEqual(2);
+    expect(wrapper.state().hashtags[0]).toEqual("tisok");
+    expect(wrapper.state().hashtags[1]).toEqual("lifeprotips");
   });
   xit("toggles open and closed", () => {
     const wrapper = shallow(
@@ -74,8 +73,8 @@ describe("ShareModal", () => {
         onRequestClose={onRequestClose}
       />
     );
-    expectChai(wrapper.instance().props.isOpen).to.be.false;
+    expect(wrapper.instance().props.isOpen).toBeFalsy();
     wrapper.setProps({ isOpen: true });
-    expectChai(wrapper.instance().props.isOpen).to.be.true;
+    expect(wrapper.instance().props.isOpen).toBeTruthy();
   });
 });

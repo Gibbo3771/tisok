@@ -5,7 +5,6 @@ import Enzyme from "enzyme";
 import App from "../App";
 import { shallow, mount } from "enzyme";
 import sinon from "sinon";
-import { expect as expectChai } from "chai";
 import axios from "axios";
 import api from "../../../api/advice_api";
 
@@ -25,51 +24,51 @@ describe("App", () => {
     expect(wrapper).toMatchSnapshot();
   });
   it("should have valid initial state", () => {
-    expectChai(wrapper.state().slip).to.be.not.null;
-    expectChai(wrapper.state().url).to.be.not.null;
+    expect(wrapper.state().slip).toBeDefined();
+    expect(wrapper.state().url).toBeDefined();
   });
   it("responds to the advice button being clicked", async () => {
     const clickSpy = sinon.spy(instance, "handleClick");
     const getRandomAdvice = sinon.spy(instance, "getRandomAdvice");
     const axiosSpy = sinon.spy(axios, "get");
-    expectChai(wrapper.exists("#advice-button")).to.be.true;
+    expect(wrapper.exists("#advice-button")).toBeTruthy();
     wrapper.find("#advice-button").simulate("click");
-    expectChai(clickSpy.calledOnce).to.be.true;
-    expectChai(getRandomAdvice.callCount).to.equal(1);
-    expectChai(axiosSpy.callCount).to.equal(1);
+    expect(clickSpy.calledOnce).toBeTruthy();
+    expect(getRandomAdvice.callCount).toEqual(1);
+    expect(axiosSpy.callCount).toEqual(1);
     axiosSpy.restore();
   });
   it("sets the slip to new values with button clicks", () => {
-    expectChai(wrapper.exists("#advice-button")).to.be.true;
+    expect(wrapper.exists("#advice-button")).toBeTruthy();
     wrapper.find("#advice-button").simulate("click");
-    expectChai(wrapper.state().slip.slip_id).to.equal(1);
-    expectChai(wrapper.state().slip.advice).to.equal("testing is important");
+    expect(wrapper.state().slip.slip_id).toEqual(1);
+    expect(wrapper.state().slip.advice).toEqual("testing is important");
   });
   it("sets the slip when setAdvice is called", () => {
     const response = {
       data: { slip: { slip_id: 5, advice: "solid advice" } }
     };
     instance.setAdvice(response);
-    expectChai(wrapper.state().slip.slip_id).to.equal(5);
-    expectChai(wrapper.state().slip.advice).to.equal("solid advice");
+    expect(wrapper.state().slip.slip_id).toEqual(5);
+    expect(wrapper.state().slip.advice).toEqual("solid advice");
   });
   it("sets the slip when getRandomAdvice is called", () => {
     const spy = sinon.spy(axios, "get");
     instance.getRandomAdvice();
-    expectChai(wrapper.state().slip.slip_id).to.equal(1);
-    expectChai(wrapper.state().slip.advice).to.equal("testing is important");
-    expectChai(spy.callCount).to.equal(1);
+    expect(wrapper.state().slip.slip_id).toEqual(1);
+    expect(wrapper.state().slip.advice).toEqual("testing is important");
+    expect(spy.callCount).toEqual(1);
     spy.restore();
   });
   it("sets the slip when getAdviceByID is called", () => {
     const spy = sinon.spy(axios, "get");
     instance.getAdviceByID(1);
-    expectChai(wrapper.state().slip.slip_id).to.equal(1);
-    expectChai(wrapper.state().slip.advice).to.equal("testing is important");
-    expectChai(spy.callCount).to.equal(1);
+    expect(wrapper.state().slip.slip_id).toEqual(1);
+    expect(wrapper.state().slip.advice).toEqual("testing is important");
+    expect(spy.callCount).toEqual(1);
     spy.restore();
   });
   it("has a social media panel", () => {
-    expectChai(wrapper.exists(".social-media-panel")).to.be.true;
+    expect(wrapper.exists(".social-media-panel")).toBeTruthy();
   });
 });

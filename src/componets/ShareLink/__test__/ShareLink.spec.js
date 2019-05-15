@@ -5,7 +5,6 @@ import Enzyme from "enzyme";
 import { shallow, mount } from "enzyme";
 import ShareLink from "../ShareLink";
 import sinon from "sinon";
-import { expect as expectChai } from "chai";
 
 Enzyme.configure({ adapter: new Adapter() });
 
