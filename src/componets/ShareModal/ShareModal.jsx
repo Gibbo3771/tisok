@@ -1,14 +1,27 @@
+// @flow
 import React from "react";
 import ReactModal from "react-modal";
-import PropTypes from "prop-types";
+import { Slip } from "../PropTypes";
 
 // All share stuff
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, TwitterIcon } from "react-share";
 import ShareLink from "../ShareLink/ShareLink";
 
-export default class ShareModal extends React.Component {
-  constructor(props) {
+export type State = {
+  text: string,
+  hashtags: Array<string>
+};
+
+export type Props = {
+  isOpen: boolean,
+  url: string,
+  slip: Slip,
+  onRequestClose: () => void
+};
+
+export default class ShareModal extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       text: "Advice to live by...",
@@ -48,9 +61,3 @@ export default class ShareModal extends React.Component {
     );
   }
 }
-
-ShareModal.propTypes = {
-  url: PropTypes.string.isRequired,
-  slip: PropTypes.any.isRequired,
-  onRequestClose: PropTypes.func.isRequired
-};
