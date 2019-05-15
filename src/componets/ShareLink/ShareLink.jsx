@@ -1,9 +1,14 @@
+// @flow
 import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import ReactTooltip from "react-tooltip";
-import PropTypes from "prop-types";
+import { Slip } from "../PropTypes";
 
-export default class ShareLink extends React.Component {
+export type Props = {
+  slip: Slip
+};
+
+export default class ShareLink extends React.Component<Props> {
   render() {
     const { slip } = this.props;
     return (
@@ -31,7 +36,3 @@ export default class ShareLink extends React.Component {
     );
   }
 }
-
-ShareLink.propTypes = {
-  slip: PropTypes.any.isRequired
-};
