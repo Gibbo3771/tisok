@@ -1,6 +1,12 @@
+// @flow
 import React from "react";
 
-export default class AdviceButton extends React.Component {
+export type Props = {
+  onClick: () => void,
+  history: any
+};
+
+export default class AdviceButton extends React.Component<Props> {
   onClick = () => {
     this.props.onClick();
     this.props.history.push("/");

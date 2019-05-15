@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme from "enzyme";
@@ -9,19 +10,20 @@ import { expect as expectChai } from "chai";
 Enzyme.configure({ adapter: new Adapter() });
 
 const props = {
-  onClick: null,
-  history: null
+  onClick: sinon.spy(),
+  history: {
+    push: sinon.spy()
+  }
 };
 describe("AdviceButton", () => {
   beforeEach(() => {
-    props.onClick = sinon.spy();
-    props.history = {
-      push: sinon.spy()
-    };
+    props.onClick.resetHistory();
+    props.history.push.resetHistory();
   });
-
   it("renders correctly", () => {
-    const tree = shallow(<AdviceButton onClick={props.onClick} />);
+    const tree = shallow(
+      <AdviceButton history={props.history} onClick={props.onClick} />
+    );
     expect(tree).toMatchSnapshot();
   });
 
