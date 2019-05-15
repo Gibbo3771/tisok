@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme from "enzyme";
@@ -12,8 +13,8 @@ Enzyme.configure({ adapter: new Adapter() });
 
 jest.mock("axios");
 
-let wrapper = null;
-let instance = null;
+let wrapper = mount(<App />);
+let instance = wrapper.instance();
 
 describe("App", () => {
   beforeEach(() => {
