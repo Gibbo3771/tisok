@@ -1,8 +1,16 @@
+// @flow
 import React from "react";
 import Anime from "react-anime";
+import { Slip } from "../PropTypes";
 
-export default class AdviceSlip extends React.Component {
-  constructor(props) {
+export type Props = {
+  onReady: (id: number) => void,
+  match: any,
+  slip: Slip
+};
+
+export default class AdviceSlip extends React.Component<Props> {
+  constructor(props: Props) {
     super(props);
     const {
       onReady,

@@ -35,7 +35,7 @@ export default class App extends React.Component<Props, State> {
               <AdviceSlip
                 {...props}
                 slip={slip}
-                onReady={id => this.getAdvice(id)}
+                onReady={(id: number) => this.getAdvice(id)}
               />
               <AdviceButton {...props} onClick={() => this.handleClick()} />
               <SocialMediaPanel url={url} />

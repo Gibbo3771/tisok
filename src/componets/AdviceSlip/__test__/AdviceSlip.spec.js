@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme from "enzyme";
@@ -9,24 +10,21 @@ import { expect as expectChai } from "chai";
 Enzyme.configure({ adapter: new Adapter() });
 
 const props = {
-  onReady: null,
+  onReady: sinon.spy(),
   match: {
     params: {
-      id: null
+      id: 1
     }
   },
   slip: {
-    slip_id: null,
-    advice: null
+    slip_id: 1,
+    advice: "always write tests first"
   }
 };
 
 describe("AdviceSlip", () => {
   beforeEach(() => {
-    props.onReady = sinon.spy();
-    props.match.params.id = 1;
-    props.slip.slip_id = 1;
-    props.slip.advice = "always write tests first";
+    props.onReady.resetHistory();
   });
   it("renders correctly if it has a slip", () => {
     const { onReady, match, slip } = props;
@@ -54,7 +52,7 @@ describe("AdviceSlip", () => {
   });
   it("calls on ready with the id if an id is given", () => {
     const { onReady, match, slip } = props;
-    // Undefined if route has no params
+    match.params.id = 1;
     const tree = shallow(
       <AdviceSlip slip={slip} onReady={onReady} match={match} />
     );
