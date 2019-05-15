@@ -1,12 +1,6 @@
 // @flow
 import React from "react";
-import Adapter from "enzyme-adapter-react-16";
-import Enzyme from "enzyme";
-import { shallow, mount } from "enzyme";
 import SocialMediaPanel from "../SocialMediaPanel";
-import sinon from "sinon";
-
-Enzyme.configure({ adapter: new Adapter() });
 
 const props = {
   url: "www.google.com"

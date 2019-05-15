@@ -1,12 +1,6 @@
 // @flow
 import React from "react";
-import Adapter from "enzyme-adapter-react-16";
-import Enzyme from "enzyme";
-import { shallow } from "enzyme";
 import AdviceButton from "../AdviceButton";
-import sinon from "sinon";
-
-Enzyme.configure({ adapter: new Adapter() });
 
 const props = {
   onClick: sinon.spy(),

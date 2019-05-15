@@ -1,14 +1,8 @@
 // @flow
 import React from "react";
-import Adapter from "enzyme-adapter-react-16";
-import Enzyme from "enzyme";
 import App from "../App";
-import { shallow, mount } from "enzyme";
-import sinon from "sinon";
 import axios from "axios";
 import api from "../../../api/advice_api";
-
-Enzyme.configure({ adapter: new Adapter() });
 
 jest.mock("axios");
 

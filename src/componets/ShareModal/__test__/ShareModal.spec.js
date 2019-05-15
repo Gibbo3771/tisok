@@ -1,13 +1,7 @@
 // @flow
 import React from "react";
-import Adapter from "enzyme-adapter-react-16";
-import Enzyme from "enzyme";
 import ShareModal from "../ShareModal";
-import { shallow, mount } from "enzyme";
-import sinon from "sinon";
 import ReactModal from "react-modal";
-
-Enzyme.configure({ adapter: new Adapter() });
 
 let wrapper = null;
 

@@ -1,12 +1,6 @@
 // @flow
 import React from "react";
-import Adapter from "enzyme-adapter-react-16";
-import Enzyme from "enzyme";
-import { shallow } from "enzyme";
 import AdviceSlip from "../AdviceSlip";
-import sinon from "sinon";
-
-Enzyme.configure({ adapter: new Adapter() });
 
 // mock match type, this is used because sometimes id is indefined depending on use case
 type Match = {
