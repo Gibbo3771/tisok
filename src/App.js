@@ -1,41 +1,64 @@
 import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import AdviceSlip from "./componets/AdviceSlip";
 import AdviceButton from "./componets/AdviceButton";
+import ShareLink from "./componets/ShareLink";
 
-import { random } from "./api/advice_api";
+import { random, get } from "./api/advice_api";
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      advice: null
+      slip: null
     };
-    this.getAdvice();
   }
 
   render() {
-    const { advice } = this.state;
+    const { slip } = this.state;
     return (
-      <div className="grid">
-        <AdviceSlip advice={advice} />
-        <AdviceButton onClick={this.handleClick} />
-      </div>
+      <Router>
+        <Route
+          path="/:id?"
+          render={props => (
+            <div className="grid">
+              <AdviceSlip {...props} slip={slip} onReady={this.getAdvice} />
+              <AdviceButton {...props} onClick={this.handleClick} />
+              <ShareLink slip={slip} onCopy={() => console.log("copied!")} />
+            </div>
+          )}
+        />
+      </Router>
     );
   }
 
   handleClick = () => {
-    this.getAdvice();
+    this.getRandomAdvice();
   };
 
-  splitAdvice = advice => {
-    this.setState({ advice: "" });
-    this.setState({ advice: advice.split("") });
+  getAdvice = id => {
+    if (!id) this.getRandomAdvice();
+    else this.getAdviceByID(id);
   };
 
-  getAdvice = () => {
+  getRandomAdvice = () => {
     random()
       .then(response => {
-        this.splitAdvice(response.data.slip.advice);
+        this.setState({ slip: null });
+        this.setState({
+          slip: response.data.slip
+        });
+      })
+      .catch(err => console.log(err));
+  };
+
+  getAdviceByID = id => {
+    get(id)
+      .then(response => {
+        this.setState({ slip: null });
+        this.setState({
+          slip: response.data.slip
+        });
       })
       .catch(err => console.log(err));
   };

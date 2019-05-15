@@ -26,10 +26,11 @@ html {
   height: 100%;
   display: grid;
   grid-template-areas:
-    "advice"
-    "button";
-  grid-template-columns: 100%;
-  grid-template-rows: auto 30%;
+    "advice advice advice"
+    ". button share";
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 70% 15%;
+  grid-gap: 15px;
   align-items: center;
   /* justify-self: center */
 }
@@ -41,6 +42,7 @@ html {
   color: #3f2141;
   background: white;
   padding: 10px;
+  min-height: 5rem;
   font-size: 2.75rem;
   min-width: 15rem;
   max-width: 20rem;
@@ -49,6 +51,10 @@ html {
   cursor: pointer;
   align-self: center;
   justify-self: center;
+}
+
+.advice-get:hover {
+  background: rgb(247, 247, 247);
 }
 
 .advice-get:active {
@@ -61,46 +67,76 @@ html {
   color: #3f2141;
   font-weight: 800;
   text-align: center;
-  font-size: 3.5rem;
+  font-size: 3.4rem;
 }
 
-/* Smartphones (portrait and landscape) ---------- */
-@media screen and (min-width: 320px) and (max-width: 480px) {
-  html {
-    font-size: 8px;
-  }
+.share-link {
+  background: white;
+  border-radius: 5px;
+  padding: 1rem;
+  grid-area: share;
+  min-height: 2.5rem;
+  font-size: 2.75rem;
+  box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.219);
+  color: #3f2141;
+  align-self: center;
+  justify-self: left;
+  text-align: center;
+  transition: color 70ms linear;
+  cursor: pointer;
 }
+
+.share-link:active {
+  transform: translate(1px, 1px);
+  transition: color 70ms linear;
+  box-shadow: none;
+}
+
+.clipboard-tooltip {
+  background: white;
+  border-radius: 3px;
+  font-size: 2rem;
+  color: #3f2141;
+}
+
+.share-link:hover {
+  background: rgb(247, 247, 247);
+}
+
 /* Smartphones (portrait) ---------- */
 @media screen and (max-width: 320px) {
   html {
-    font-size: 8px;
+    font-size: 7px;
   }
 }
 /* Smartphones (landscape) ---------- */
 @media screen and (min-width: 321px) {
   html {
-    /* font-size: 10px; */
+    font-size: 8px;
   }
 }
 /* Tablets, iPads (portrait and landscape) ---------- */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+  html {
+    font-size: 8px;
+  }
 }
 /* Tablets, iPads (portrait) ---------- */
 @media screen and (min-width: 768px) {
   html {
-    font-size: 12px;
+    font-size: 8px;
   }
 }
 /* Tablets, iPads (landscape) ---------- */
 @media screen and (min-width: 1024px) {
   html {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 /* Desktops and laptops ---------- */
 @media screen and (min-width: 1224px) {
   html {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 /* Large screens ---------- */
