@@ -51,8 +51,6 @@ export default class App extends React.Component<Props, State> {
   };
 
   getAdvice = (id?: number) => {
-    console.log(id);
-
     if (!id) this.getRandomAdvice();
     else this.getAdviceByID(id);
   };

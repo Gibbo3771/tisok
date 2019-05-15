@@ -1,14 +1,15 @@
+// @flow
 import axios from "axios";
 
 const URL = "https://api.adviceslip.com/advice";
 
 class AdviceAPI {
   random = () => {
-    return axios.get(URL);
+    return axios.get<string, any>(URL);
   };
 
-  get = id => {
-    return axios.get(`${URL}/${id}`);
+  get = (id: number) => {
+    return axios.get<string, any>(`${URL}/${id}`);
   };
 }
 
