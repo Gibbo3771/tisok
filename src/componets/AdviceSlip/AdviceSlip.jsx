@@ -4,23 +4,18 @@ import Anime from "react-anime";
 import { Slip } from "../PropTypes";
 
 export type Props = {
-  onReady: (id: number) => void,
-  match: any,
+  history: any,
   slip: Slip
 };
 
 export default class AdviceSlip extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
-    const {
-      onReady,
-      match: { params }
-    } = this.props;
-    onReady(params.id);
   }
 
   render() {
     const { slip } = this.props;
+
     if (!slip.advice) return <div />;
     const animeProps = {
       opacity: [0, 1],
