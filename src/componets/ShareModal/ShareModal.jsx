@@ -37,7 +37,7 @@ export default class ShareModal extends React.Component<Props, State> {
         className="share-modal"
         // overlayClassName="share-modal-overlay"
         id="modal"
-        isOpen={this.props.isOpen}
+        isOpen={isOpen}
         onRequestClose={onRequestClose}
       >
         <FacebookShareButton

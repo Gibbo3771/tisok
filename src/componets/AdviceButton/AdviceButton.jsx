@@ -2,14 +2,12 @@
 import React from "react";
 
 export type Props = {
-  onClick: () => void,
-  history: any
+  onClick: () => void
 };
 
 export default class AdviceButton extends React.Component<Props> {
   onClick = () => {
     this.props.onClick();
-    this.props.history.push("/");
   };
 
   render() {

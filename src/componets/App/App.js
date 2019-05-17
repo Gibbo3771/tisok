@@ -1,76 +1,76 @@
 // @flow
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import AdviceSlip from "../AdviceSlip/AdviceSlip";
 import AdviceButton from "../AdviceButton/AdviceButton";
-import ShareModal from "../ShareModal/ShareModal";
 import { withRouter } from "react-router-dom";
 
 import api from "../../api/advice_api";
 import SocialMediaPanel from "../SocialMediaPanel/SocialMediaPanel";
+import { Slip } from "../PropTypes";
 
 export type Props = {
-  history: any
+  history: any,
+  location: Location,
+  match: any
 };
 
 export type State = {
-  slip: any,
+  slip: Slip,
   url: string
 };
 
 class App extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    console.log(props);
-
     this.state = {
       slip: {},
-      url: window.location.href
+      url: ""
     };
-    this.getAdvice();
+  }
+
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    if (id) this.getAdviceByID(id);
+    else this.getRandomAdvice();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.getAdviceByID(this.props.match.params.id);
+      return;
+    }
   }
 
   render() {
     const { slip, url } = this.state;
-
     return (
-      <Route path="/:id?">
-        <div className="grid">
-          <AdviceSlip {...this.props} slip={slip} />
-          <AdviceButton
-            {...this.props}
-            onClick={() => this.handleClick(this.props.history)}
-          />
-          <SocialMediaPanel url={url} />
-        </div>
-      </Route>
+      <div className="grid">
+        <AdviceSlip slip={slip} />
+        <AdviceButton onClick={() => this.handleClick()} />
+        <SocialMediaPanel url={url} />
+      </div>
     );
   }
 
-  handleClick = (history: any) => {
-    history.push(`${this.state.slip.slip_id}`);
+  handleClick = () => {
     this.getRandomAdvice();
-  };
-
-  getAdvice = (id?: number) => {
-    if (!id) this.getRandomAdvice();
-    else this.getAdviceByID(id);
-  };
-
-  setAdvice = (response: any) => {
-    const { slip } = response.data;
-    this.setState({ slip: {} });
-    this.setState({
-      slip: slip,
-      url: `${window.location.href}${slip.slip_id}`
-    });
   };
 
   getRandomAdvice = () => {
     return api
       .random()
       .then(response => {
-        this.setAdvice(response);
+        const { slip } = response.data;
+
+        this.setState(
+          {
+            slip: slip,
+            url: `${window.location.href}${slip.slip_id}`
+          },
+          () => {
+            this.props.history.push(`${slip.slip_id}`);
+          }
+        );
       })
       .catch(err => console.log(err));
   };
@@ -79,7 +79,11 @@ class App extends React.Component<Props, State> {
     api
       .get(id)
       .then(response => {
-        this.setAdvice(response);
+        const { slip } = response.data;
+        this.setState({
+          slip: slip,
+          url: `${window.location.href}${slip.slip_id}`
+        });
       })
       .catch(err => console.log(err));
   };

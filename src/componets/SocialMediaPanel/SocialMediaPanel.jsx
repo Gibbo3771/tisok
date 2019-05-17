@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
-import { FacebookShareButton, TwitterShareButton } from "react-share";
-import { FacebookIcon, TwitterIcon, LinkedinShareButton } from "react-share";
+import { TwitterShareButton } from "react-share";
 import ReactTooltip from "react-tooltip";
 
 export type Props = {
