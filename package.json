@@ -13,6 +13,7 @@
     "react-facebook": "^8.0.4",
     "react-modal": "^3.8.1",
     "react-pose": "^4.0.8",
+    "react-pose-text": "^3.1.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "react-share": "^2.4.0",
