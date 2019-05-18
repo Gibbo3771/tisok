@@ -62,12 +62,9 @@ class App extends React.Component<Props, State> {
       .then(response => {
         const { slip } = response.data;
         this.props.history.push(`${slip.slip_id}`);
-        this.setState(
-          {
-            slip: slip
-          },
-          () => {}
-        );
+        this.setState({
+          slip: slip
+        });
       })
       .catch(err => console.log(err));
   }

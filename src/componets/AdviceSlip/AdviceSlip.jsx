@@ -15,7 +15,7 @@ const charPoses = {
     y: 80,
     transition: ({ charInWordIndex }) => ({
       type: "spring",
-      delay: charInWordIndex * 10,
+      delay: charInWordIndex * 30 * Math.random(),
       stiffness: 200 + charInWordIndex * 90,
       damping: 8
     })
@@ -25,7 +25,7 @@ const charPoses = {
     y: 0,
     transition: ({ charInWordIndex }) => ({
       type: "spring",
-      delay: charInWordIndex * 10,
+      delay: charInWordIndex * 30,
       stiffness: 200 + charInWordIndex * 90,
       damping: 8
     })
@@ -40,8 +40,6 @@ const Container = posed.div({
 export default class AdviceSlip extends React.Component<Props> {
   render() {
     const { slip } = this.props;
-    console.log("render");
-
     if (!slip.advice) return <div />;
     return (
       <PoseGroup id="advice-text" className="advice-text">
