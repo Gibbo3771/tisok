@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 import ShareModal from "../ShareModal";
 import ReactModal from "react-modal";

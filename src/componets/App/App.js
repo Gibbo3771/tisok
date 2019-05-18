@@ -1,48 +1,54 @@
 // @flow
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import AdviceSlip from "../AdviceSlip/AdviceSlip";
 import AdviceButton from "../AdviceButton/AdviceButton";
-import ShareModal from "../ShareModal/ShareModal";
+import { withRouter } from "react-router-dom";
 
 import api from "../../api/advice_api";
 import SocialMediaPanel from "../SocialMediaPanel/SocialMediaPanel";
+import { Slip } from "../PropTypes";
 
-export type Props = {};
+export type Props = {
+  history: any,
+  location: Location,
+  match: any
+};
 
 export type State = {
-  slip: any,
+  slip: Slip,
   url: string
 };
 
-export default class App extends React.Component<Props, State> {
+class App extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
       slip: {},
-      url: window.location.href
+      url: ""
     };
+  }
+
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    if (id) this.getAdviceByID(id);
+    else this.getRandomAdvice();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.getAdviceByID(this.props.match.params.id);
+      return;
+    }
   }
 
   render() {
     const { slip, url } = this.state;
     return (
-      <Router>
-        <Route
-          path="/:id?"
-          render={props => (
-            <div className="grid">
-              <AdviceSlip
-                {...props}
-                slip={slip}
-                onReady={(id: number) => this.getAdvice(id)}
-              />
-              <AdviceButton {...props} onClick={() => this.handleClick()} />
-              <SocialMediaPanel url={url} />
-            </div>
-          )}
-        />
-      </Router>
+      <div className="grid">
+        <AdviceSlip slip={slip} />
+        <AdviceButton onClick={() => this.handleClick()} />
+        <SocialMediaPanel url={url} />
+      </div>
     );
   }
 
@@ -50,35 +56,37 @@ export default class App extends React.Component<Props, State> {
     this.getRandomAdvice();
   };
 
-  getAdvice = (id?: number) => {
-    if (!id) this.getRandomAdvice();
-    else this.getAdviceByID(id);
-  };
-
-  setAdvice = (response: any) => {
-    const { slip } = response.data;
-    this.setState({ slip: {} });
-    this.setState({
-      slip: slip,
-      url: `${window.location.href}${slip.slip_id}`
-    });
-  };
-
-  getRandomAdvice = () => {
+  getRandomAdvice() {
     return api
       .random()
       .then(response => {
-        this.setAdvice(response);
+        const { slip } = response.data;
+
+        this.setState(
+          {
+            slip: slip,
+            url: `${window.location.href}${slip.slip_id}`
+          },
+          () => {
+            this.props.history.push(`${slip.slip_id}`);
+          }
+        );
       })
       .catch(err => console.log(err));
-  };
+  }
 
   getAdviceByID = (id: number) => {
     api
       .get(id)
       .then(response => {
-        this.setAdvice(response);
+        const { slip } = response.data;
+        this.setState({
+          slip: slip,
+          url: `${window.location.href}${slip.slip_id}`
+        });
       })
       .catch(err => console.log(err));
   };
 }
+
+export default withRouter(App);

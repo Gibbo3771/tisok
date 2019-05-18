@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 import AdviceSlip from "../AdviceSlip";
 
@@ -38,23 +37,5 @@ describe("AdviceSlip", () => {
       <AdviceSlip onReady={onReady} match={match} slip={slip} />
     );
     expect(tree).toMatchSnapshot();
-  });
-  it("calls on ready with no id if no id is given", () => {
-    const { onReady, match, slip } = props;
-    // Undefined if route has no params
-    // $ExpectError
-    match.params.id = undefined;
-    const tree = shallow(
-      <AdviceSlip slip={slip} onReady={onReady} match={match} />
-    );
-    expect(onReady.calledOnceWith(undefined)).toBeTruthy();
-  });
-  it("calls on ready with the id if an id is given", () => {
-    const { onReady, match, slip } = props;
-    match.params.id = 1;
-    const tree = shallow(
-      <AdviceSlip slip={slip} onReady={onReady} match={match} />
-    );
-    expect(onReady.calledOnceWith(1)).toBeTruthy();
   });
 });

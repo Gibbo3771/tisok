@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 import AdviceButton from "../AdviceButton";
 
@@ -20,7 +19,8 @@ describe("AdviceButton", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it("pushes '/' to the browser history", () => {
+  // Depreciated functionality
+  xit("pushes '/' to the browser history", () => {
     const wrapper = shallow(
       <AdviceButton history={props.history} onClick={props.onClick} />
     );
