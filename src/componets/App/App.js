@@ -47,7 +47,7 @@ class App extends React.Component<Props, State> {
       <div className="grid">
         <AdviceSlip slip={slip} />
         <AdviceButton onClick={() => this.handleClick()} />
-        <SocialMediaPanel url={url} />
+        {/* <SocialMediaPanel url={url} /> */}
       </div>
     );
   }
