@@ -1,5 +1,131 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AdviceSlip renders correctly if it has a slip 1`] = `ShallowWrapper {}`;
+exports[`AdviceSlip renders correctly if it has a slip 1`] = `
+<div
+  className="advice-text"
+  id="advice-text"
+>
+  <span
+    key="0"
+  >
+    a
+  </span>
+  <span
+    key="1"
+  >
+    l
+  </span>
+  <span
+    key="2"
+  >
+    w
+  </span>
+  <span
+    key="3"
+  >
+    a
+  </span>
+  <span
+    key="4"
+  >
+    y
+  </span>
+  <span
+    key="5"
+  >
+    s
+  </span>
+  <span
+    key="6"
+  >
+     
+  </span>
+  <span
+    key="7"
+  >
+    w
+  </span>
+  <span
+    key="8"
+  >
+    r
+  </span>
+  <span
+    key="9"
+  >
+    i
+  </span>
+  <span
+    key="10"
+  >
+    t
+  </span>
+  <span
+    key="11"
+  >
+    e
+  </span>
+  <span
+    key="12"
+  >
+     
+  </span>
+  <span
+    key="13"
+  >
+    t
+  </span>
+  <span
+    key="14"
+  >
+    e
+  </span>
+  <span
+    key="15"
+  >
+    s
+  </span>
+  <span
+    key="16"
+  >
+    t
+  </span>
+  <span
+    key="17"
+  >
+    s
+  </span>
+  <span
+    key="18"
+  >
+     
+  </span>
+  <span
+    key="19"
+  >
+    f
+  </span>
+  <span
+    key="20"
+  >
+    i
+  </span>
+  <span
+    key="21"
+  >
+    r
+  </span>
+  <span
+    key="22"
+  >
+    s
+  </span>
+  <span
+    key="23"
+  >
+    t
+  </span>
+</div>
+`;
 
-exports[`AdviceSlip renders correctly if it has an empty slip 1`] = `ShallowWrapper {}`;
+exports[`AdviceSlip renders correctly if it has an empty slip 1`] = `<div />`;

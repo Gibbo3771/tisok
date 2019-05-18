@@ -1,3 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ShareLink renders correctly if it has a slip 1`] = `ShallowWrapper {}`;
+exports[`ShareLink renders correctly if it has a slip 1`] = `
+<ShareLink
+  slip={
+    Object {
+      "advice": "some advice",
+      "slip_id": 1,
+    }
+  }
+>
+  <CopyToClipboard
+    text="http://localhost/"
+  >
+    <i
+      className="fas fa-clipboard share-link"
+      data-for="clipboard"
+      data-is-capture="true"
+      data-tip="Copy link to clipboard"
+      onClick={[Function]}
+    />
+  </CopyToClipboard>
+  <ReactTooltip
+    className="tooltip"
+    clickable={true}
+    effect="solid"
+    id="clipboard"
+    insecure={true}
+    place="top"
+    resizeHide={true}
+    type="tooltip"
+    wrapper="div"
+  >
+    <div
+      className="__react_component_tooltip place-top type-dark allow_click "
+      data-id="tooltip"
+      id="clipboard"
+    />
+  </ReactTooltip>
+</ShareLink>
+`;

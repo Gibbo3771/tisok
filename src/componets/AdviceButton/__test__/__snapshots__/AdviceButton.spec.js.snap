@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AdviceButton renders correctly 1`] = `ShallowWrapper {}`;
+exports[`AdviceButton renders correctly 1`] = `
+<button
+  className="advice-get"
+  id="advice-button"
+  onClick={[Function]}
+>
+  (｡^‿^｡)
+</button>
+`;

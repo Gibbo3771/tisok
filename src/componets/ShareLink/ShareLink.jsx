@@ -1,18 +1,22 @@
+// @flow
 import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import ReactTooltip from "react-tooltip";
-import PropTypes from "prop-types";
+import { Slip } from "../PropTypes";
 
-export default class ShareLink extends React.Component {
+export type Props = {
+  slip: Slip
+};
+
+export default class ShareLink extends React.Component<Props> {
   render() {
     const { slip } = this.props;
+
     return (
       <React.Fragment>
-        <CopyToClipboard
-          text={`${window.location.href}${slip ? slip.slip_id : ""}`}
-        >
+        <CopyToClipboard text={`${window.location.href}`}>
           <i
-            className="fa fa-clipboard share-link"
+            className="fas fa-clipboard share-link"
             ref="clipboard"
             data-for="clipboard"
             data-tip="Copy link to clipboard"
@@ -20,18 +24,14 @@ export default class ShareLink extends React.Component {
           />
         </CopyToClipboard>
         <ReactTooltip
-          className="clipboard-tooltip"
+          className="tooltip"
           id="clipboard"
           place="top"
           effect="solid"
-          type="clipboard-tooltip"
+          type="tooltip"
           clickable={true}
         />
       </React.Fragment>
     );
   }
 }
-
-ShareLink.propTypes = {
-  slip: PropTypes.any.isRequired
-};

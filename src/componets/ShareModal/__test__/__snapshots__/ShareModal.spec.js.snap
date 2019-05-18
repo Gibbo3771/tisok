@@ -1,3 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ShareModal renders correctly 1`] = `ShallowWrapper {}`;
+exports[`ShareModal renders correctly 1`] = `
+<Modal
+  ariaHideApp={true}
+  bodyOpenClassName="ReactModal__Body--open"
+  className="share-modal"
+  closeTimeoutMS={0}
+  id="modal"
+  isOpen={false}
+  onRequestClose={[Function]}
+  parentSelector={[Function]}
+  portalClassName="ReactModalPortal"
+  role="dialog"
+  shouldCloseOnEsc={true}
+  shouldCloseOnOverlayClick={true}
+  shouldFocusAfterRender={true}
+  shouldReturnFocusAfterClose={true}
+>
+  <CreatedButton
+    className="share-facebook"
+    hashtag="tisok"
+    quote="Advice to live by..."
+    url="www.google.com"
+    windowHeight={400}
+    windowWidth={550}
+  >
+    <Icon
+      className=""
+      iconBgStyle={Object {}}
+      logoFillColor="white"
+      round={true}
+      size={48}
+    />
+  </CreatedButton>
+  <CreatedButton
+    className="share-twitter"
+    hashtags={
+      Array [
+        "tisok",
+        "lifeprotips",
+      ]
+    }
+    title="Advice to live by..."
+    url="www.google.com"
+    windowHeight={400}
+    windowWidth={550}
+  >
+    <Icon
+      className=""
+      iconBgStyle={Object {}}
+      logoFillColor="white"
+      round={true}
+      size={48}
+    />
+  </CreatedButton>
+  <ShareLink
+    slip={
+      Object {
+        "advice": "eat fruit",
+        "slip_id": 1,
+      }
+    }
+  />
+</Modal>
+`;

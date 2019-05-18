@@ -3,11 +3,16 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./componets/App/App";
 import * as serviceWorker from "./serviceWorker";
-import ReactModal from "react-modal";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-ReactModal.setAppElement(document.getElementById("root"));
-
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <Router>
+    <Route strict={true} path="/:id?">
+      <App />
+    </Route>
+  </Router>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
