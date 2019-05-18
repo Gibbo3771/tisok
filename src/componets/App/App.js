@@ -79,7 +79,8 @@ class App extends React.Component<Props, State> {
             ? slip
             : {
                 advice:
-                  "404 is the most common error on the web, it just happens to be this is also what you're seeing now"
+                  "404 is not a bed error, it simply means the page was not found. Such as when you try to look for advice using the ID " +
+                  id
               }
         });
       })
