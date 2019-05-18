@@ -56,7 +56,7 @@ class App extends React.Component<Props, State> {
     this.getRandomAdvice();
   };
 
-  getRandomAdvice = () => {
+  getRandomAdvice() {
     return api
       .random()
       .then(response => {
@@ -73,7 +73,7 @@ class App extends React.Component<Props, State> {
         );
       })
       .catch(err => console.log(err));
-  };
+  }
 
   getAdviceByID = (id: number) => {
     api
