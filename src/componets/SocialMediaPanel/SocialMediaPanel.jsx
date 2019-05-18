@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { TwitterShareButton } from "react-share";
+import FacebookShareButton from "../FacebookShareButton/FacebookShareButton";
 import ReactTooltip from "react-tooltip";
 
 export type Props = {
@@ -32,14 +33,7 @@ export default class SocialMediaPanel extends React.Component<Props, State> {
         data-for="social-media-tooltip"
         data-tip="Share"
       >
-        {/* <FacebookShareButton
-          className="share-facebook"
-          url={url}
-          quote={text}
-          hashtag={hashtags[0]}
-        >
-          <i className="fab fa-facebook-square icon-facebook icon" />
-        </FacebookShareButton> */}
+        <FacebookShareButton url={url} />
         <TwitterShareButton
           className="share-twitter"
           url={url}
@@ -48,9 +42,6 @@ export default class SocialMediaPanel extends React.Component<Props, State> {
         >
           <i className="fab fa-twitter-square icon-twitter icon" />
         </TwitterShareButton>
-        {/* <LinkedinShareButton url={url} title={text} description={description}>
-          <i class="fab fa-linkedin icon-linkedin icon" />
-        </LinkedinShareButton> */}
         <ReactTooltip
           className="tooltip"
           id="social-media-tooltip"
