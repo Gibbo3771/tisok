@@ -76,6 +76,11 @@ class App extends React.Component<Props, State> {
         const { slip } = response.data;
         this.setState({
           slip: slip
+            ? slip
+            : {
+                advice:
+                  "404 is the most common error on the web, it just happens to be this is also what you're seeing now"
+              }
         });
       })
       .catch(err => console.log(err));
