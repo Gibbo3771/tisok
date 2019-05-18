@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 import ShareLink from "../ShareLink";
 
