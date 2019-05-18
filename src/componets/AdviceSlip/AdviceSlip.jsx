@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { Slip } from "../PropTypes";
+import Anime from "react-anime";
 
 export type Props = {
   slip: Slip

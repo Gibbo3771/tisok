@@ -10,10 +10,10 @@ exports[`ShareLink renders correctly if it has a slip 1`] = `
   }
 >
   <CopyToClipboard
-    text="http://localhost/1"
+    text="http://localhost/"
   >
     <i
-      className="fa fa-clipboard share-link"
+      className="fas fa-clipboard share-link"
       data-for="clipboard"
       data-is-capture="true"
       data-tip="Copy link to clipboard"
@@ -21,14 +21,14 @@ exports[`ShareLink renders correctly if it has a slip 1`] = `
     />
   </CopyToClipboard>
   <ReactTooltip
-    className="clipboard-tooltip"
+    className="tooltip"
     clickable={true}
     effect="solid"
     id="clipboard"
     insecure={true}
     place="top"
     resizeHide={true}
-    type="clipboard-tooltip"
+    type="tooltip"
     wrapper="div"
   >
     <div

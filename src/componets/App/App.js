@@ -7,6 +7,7 @@ import { withRouter } from "react-router-dom";
 import api from "../../api/advice_api";
 import SocialMediaPanel from "../SocialMediaPanel/SocialMediaPanel";
 import { Slip } from "../PropTypes";
+import ShareLink from "../ShareLink/ShareLink";
 
 export type Props = {
   history: any,
@@ -15,16 +16,14 @@ export type Props = {
 };
 
 export type State = {
-  slip: Slip,
-  url: string
+  slip: Slip
 };
 
 class App extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      slip: {},
-      url: ""
+      slip: {}
     };
   }
 
@@ -42,11 +41,12 @@ class App extends React.Component<Props, State> {
   }
 
   render() {
-    const { slip, url } = this.state;
+    const { slip } = this.state;
     return (
       <div className="grid">
         <AdviceSlip slip={slip} />
         <AdviceButton onClick={() => this.handleClick()} />
+        <ShareLink slip={slip} />
         {/* <SocialMediaPanel url={url} /> */}
       </div>
     );
@@ -61,15 +61,12 @@ class App extends React.Component<Props, State> {
       .random()
       .then(response => {
         const { slip } = response.data;
-
+        this.props.history.push(`${slip.slip_id}`);
         this.setState(
           {
-            slip: slip,
-            url: `${window.location.href}${slip.slip_id}`
+            slip: slip
           },
-          () => {
-            this.props.history.push(`${slip.slip_id}`);
-          }
+          () => {}
         );
       })
       .catch(err => console.log(err));
@@ -81,8 +78,7 @@ class App extends React.Component<Props, State> {
       .then(response => {
         const { slip } = response.data;
         this.setState({
-          slip: slip,
-          url: `${window.location.href}${slip.slip_id}`
+          slip: slip
         });
       })
       .catch(err => console.log(err));

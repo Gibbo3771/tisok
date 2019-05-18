@@ -23,7 +23,6 @@ describe("App", () => {
       </MemoryRouter>
     ).find("App");
     expect(wrapper.state()).toBeDefined();
-    expect(wrapper.state().url).toBeDefined();
   });
 
   it("should have the correct props, history and location", () => {
