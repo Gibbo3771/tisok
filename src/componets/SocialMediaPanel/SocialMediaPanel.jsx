@@ -26,7 +26,7 @@ export default class SocialMediaPanel extends React.Component<Props, State> {
 
   render() {
     const { url } = this.props;
-    const { text, hashtags, description } = this.state;
+    const { text, hashtags } = this.state;
     return (
       <div
         className="social-media-panel"

@@ -10,8 +10,6 @@ export type Props = {
 
 export default class ShareLink extends React.Component<Props> {
   render() {
-    const { slip } = this.props;
-
     return (
       <React.Fragment>
         <CopyToClipboard text={`${window.location.href}`}>

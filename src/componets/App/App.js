@@ -5,7 +5,6 @@ import AdviceButton from "../AdviceButton/AdviceButton";
 import { withRouter } from "react-router-dom";
 
 import api from "../../api/advice_api";
-import SocialMediaPanel from "../SocialMediaPanel/SocialMediaPanel";
 import { Slip } from "../PropTypes";
 import ShareLink from "../ShareLink/ShareLink";
 

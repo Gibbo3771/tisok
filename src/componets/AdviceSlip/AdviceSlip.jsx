@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import { Slip } from "../PropTypes";
-import Anime from "react-anime";
 import posed, { PoseGroup } from "react-pose";
 import SplitText from "react-pose-text";
 
